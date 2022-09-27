@@ -1,2 +1,2 @@
 # STRING
-String functions for uC
+String functions for uC.
