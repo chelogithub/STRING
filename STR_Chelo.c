@@ -483,7 +483,7 @@ if (c==0)
 else
 	{
 		x=c;
-		if (x>512)// OJO SOLO HTTP if (x>128)
+		if (x>128)// OJO SOLO HTTP if (x>128)
 			{
 				return(1);
 			}
@@ -500,7 +500,7 @@ else
 			if (d==1)
 			{
 			  p=c;
-			  while (p<512)// OJO SOLO HTTP while (p<128)
+			  while (p<128)// OJO SOLO HTTP while (p<128)
 			  {
 
 				  *a++=*f;//*a++=*e; //Lo que está en la memoria de f vaya a la memoria de a
