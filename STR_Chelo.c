@@ -463,6 +463,27 @@ int i=0;
 		return(i);
 }
 
+int FTOA( int a,  unsigned char *v1, int comma)
+{
+char origbuff[20]="0";
+int i=0;
+int b=0;
+
+		sprintf(origbuff,"%i",a);
+		b=strlen(origbuff);
+		while(i<=((b)+1))
+		{
+			if((i==comma)&&(comma<(b)))
+			{
+				*v1++='.';
+				//i++;
+			}
+			*v1++=(unsigned char)origbuff[i];
+			i++;
+		}
+		return(i);
+}
+
 uint16_t ByteToInt( uint8_t a, uint8_t b)
 {
 	uint16_t c=0;

@@ -13,7 +13,12 @@ int INTOA( int , unsigned char *); //Colocar en otro .h y.c
 int					Nro a convertir
 unsigned char*		cadena de caracteres resultante
 -----------------------------------------------*/
-
+int FTOA( int a,  unsigned char *v1, int comma);
+/*----------------------------------------------
+int					Nro a convertir
+unsigned char*		cadena de caracteres resultante
+comma				lugar del nro donde se quiere poner la coma
+-----------------------------------------------*/
 
 int FT_String( unsigned char * , unsigned char *, unsigned char *,int *, int);
 /*-------------------------------------------------------------------------------------------
