@@ -471,17 +471,39 @@ int b=0;
 
 		sprintf(origbuff,"%i",a);
 		b=strlen(origbuff);
-		while(i<=((b)+1))
+		if(comma<b)
 		{
-			if((i==comma)&&(comma<(b)))
+
+			while(i<=((b)+1))
 			{
-				*v1++='.';
-				//i++;
+				if((i==(b-comma))&&(comma<(b)))
+				{
+					*v1++='.';
+					//i++;
+				}
+				*v1++=(unsigned char)origbuff[i];
+				i++;
 			}
-			*v1++=(unsigned char)origbuff[i];
-			i++;
+			return(i);
+			/*while(i<=((b)+1))
+			{
+				if((i==comma)&&(comma<(b)))
+				{
+					*v1++='.';
+					//i++;
+				}
+				*v1++=(unsigned char)origbuff[i];
+				i++;
+			}
+			return(i);*/
+		  }
+		else
+		{
+			*v1++='0';
+			*v1++='.';
+			*v1++='0';
 		}
-		return(i);
+		return(0);
 }
 
 uint16_t ByteToInt( uint8_t a, uint8_t b)
