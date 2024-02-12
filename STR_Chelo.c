@@ -543,7 +543,7 @@ else
 			if (d==1)
 			{
 			  p=c;
-			  while (p<512)// OJO SOLO HTTP while (p<128)
+			  while (p<c+1)//512)// OJO SOLO HTTP while (p<128)
 			  {
 
 				  *a++=*f;//*a++=*e; //Lo que está en la memoria de f vaya a la memoria de a
