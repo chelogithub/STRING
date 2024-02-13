@@ -20,7 +20,7 @@ unsigned char*		cadena de caracteres resultante
 comma				lugar del nro donde se quiere poner la coma
 -----------------------------------------------*/
 
-int FT_String( unsigned char * , unsigned char *, unsigned char *,int *, int);
+int FT_String( unsigned char * , unsigned char *, unsigned char *,int *, int, int);
 /*-------------------------------------------------------------------------------------------
 ADVERTENCIA, esta funció utiliza y funciona solamente con caracter delimitador "\0"
 
@@ -110,7 +110,7 @@ int								Instrucci�n para la tarea que realiza la funci�n
 									3: Elimina de maneRa autom�tica la cadena tok y la copia al vector especificado
 									
 -----------------------------------------------*/
-int FT_String_ND( unsigned char * ,int *, unsigned char *, int *, unsigned char *,int *, int *, int *,int);
+int FT_String_ND( unsigned char * ,int *, unsigned char *, int *, unsigned char *,int *, int *, int *,int,int);
 /*-------------------------------------------------------------------------------------------
 ADVERTENCIA, esta funció utiliza y funciona solamente con caracter delimitador "\0"
 
@@ -199,6 +199,7 @@ OUT:unsigned char*	cadena de caracteres extra�da
 OUT:int				cdad de elementos del vector
 OUT:int * 			ubicacion en donde comienza la cadena buscada
 OUT:int		ID de conexion
+IN :int				longitud del vector en función 4 maximo tamaño para evitar escritura fuera del area de memoria
 IN :int								Instrucci�n para la tarea que realiza la funci�n
 									0: Busca en la cadena lo qu se detalla en el segundo unsigned char *
 									1: Elimina en la cadena lo qu se detalla en el segundo unsigned char *

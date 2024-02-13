@@ -10,7 +10,7 @@
 #include "stdio.h"
 #include "STR_Chelo.h"
 
-int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubicacion, int tf)
+int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubicacion, int of, int tf)
 {
 	int n=0,n2=0,n3=0,n4=0, lnga=0, lngb=0,lngd=0,lnge=0,h=0,estado=0;
 	
@@ -80,6 +80,10 @@ int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubic
 							}
 							strtok(c,",:");
 							lngd= atoi(strtok(NULL,",: "));
+							if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector 
 									if (lngd < 10) 
 											{
@@ -149,7 +153,7 @@ int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubic
 			}
 }
 
-int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsigned char * c,int *cn, int *ubicacion, int *idcom, int tf)
+int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsigned char * c,int *cn, int *ubicacion, int *idcom, int of, int tf)
 {
 	int n=0,n2=0,n3=0,n4=0,n5=0, lnga=0, lngb=0,lngd=0,lnge=0,h=0,estado=0,cliente=0;
 
@@ -230,6 +234,10 @@ int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsign
 							}
 							strtok(c,",:");
 							lngd= atoi(strtok(NULL,",: "));
+							if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector
 									if (lngd < 10)
 											{
@@ -303,10 +311,15 @@ int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsign
 							{						 // n quedó en la ultima posicion del vector b
 								c[n4]=a[n-lngb+n4];
 								n4++;
-								*cn=n4;  //lonitud del vector tok + el /r/n+IPD,XXX:
+								*cn=n4;  //lonitud del vector tok + el /r/n+IPD,XX:
 							}
 							strtok(c,",:"); //En teoria no afecta el vector
 							lngd= atoi(strtok(NULL,",: ")); //Datos informados de +IPD,XX: no deberia afectar el vector
+
+							if(lngd>=of-1)//if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector
 									if (lngd < 10)
 											{
@@ -381,6 +394,10 @@ int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsign
 							strtok(c,",:"); //En teoria no afecta el vector
 							cliente= atoi(strtok(NULL,",: ")); //Clieng del cual se reciben los datos
 							lngd= atoi(strtok(NULL,",: ")); //Datos informados de +IPD,XX: no deberia afectar el vector
+							if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector
 									if (lngd < 10)
 											{
