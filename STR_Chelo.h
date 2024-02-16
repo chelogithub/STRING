@@ -198,7 +198,7 @@ IN :int				cdad de elementos del vector
 OUT:unsigned char*	cadena de caracteres extra�da
 OUT:int				cdad de elementos del vector
 OUT:int * 			ubicacion en donde comienza la cadena buscada
-OUT:int		ID de conexion
+OUT:int				ID de conexion
 IN :int				longitud del vector en función 4 maximo tamaño para evitar escritura fuera del area de memoria
 IN :int								Instrucci�n para la tarea que realiza la funci�n
 									0: Busca en la cadena lo qu se detalla en el segundo unsigned char *
