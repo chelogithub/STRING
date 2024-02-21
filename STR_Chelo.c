@@ -486,9 +486,9 @@ char origbuff[20]="0";
 int i=0;
 int b=0;
 
-		sprintf(origbuff,"%i",a);
+		sprintf(origbuff,"%i",a); 	//Paso el entreo a cadena de caracteres
 		b=strlen(origbuff);
-		if(comma<b)
+		if(comma<b)					//Si la posición de la coma es menor a la posición de los caracteres ejemplo int= 2 comma=0 resultado = 0,02
 		{
 
 			while(i<=((b)+1))
@@ -516,9 +516,9 @@ int b=0;
 		  }
 		else
 		{
-			*v1++='0';
+			/*v1++='0';
 			*v1++='.';
-			*v1++='0';
+			*v1++='0';*/
 		}
 		return(0);
 }
