@@ -482,7 +482,10 @@ int i=0;
 
 int FTOA( int a,  unsigned char *v1, int comma)
 {
-char origbuff[20]="0";
+//char origbuff[20]="0";
+char origbuff[20];
+origbuff[0]='\0';
+
 int i=0;
 int b=0;
 
@@ -490,36 +493,40 @@ int b=0;
 		b=strlen(origbuff);
 		if(comma<b)					//Si la posición de la coma es menor a la posición de los caracteres ejemplo int= 2 comma=0 resultado = 0,02
 		{
-
 			while(i<=((b)+1))
 			{
-				if((i==(b-comma))&&(comma<(b)))
+				if((i==(b-comma))&&(comma<(b))&&(comma!=0))
 				{
 					*v1++='.';
-					//i++;
 				}
 				*v1++=(unsigned char)origbuff[i];
 				i++;
 			}
+			//*v1++='\0';
 			return(i);
-			/*while(i<=((b)+1))
-			{
-				if((i==comma)&&(comma<(b)))
-				{
-					*v1++='.';
-					//i++;
-				}
-				*v1++=(unsigned char)origbuff[i];
-				i++;
-			}
-			return(i);*/
 		  }
 		else
 		{
-			/*v1++='0';
-			*v1++='.';
-			*v1++='0';*/
+			if(b==1)
+			{
+				v1[0]='0';
+				v1[1]='.';
+				v1[2]=origbuff[0];
+				v1[3]='\0';
+			}
+			else
+			{
+				if(b==0)
+				{
+					*v1++='0';
+					*v1++='.';
+					*v1++='0';
+					*v1++='\0';
+				}
+			}
+
 		}
+
 		return(0);
 }
 
