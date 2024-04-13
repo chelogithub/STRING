@@ -10,7 +10,7 @@
 #include "stdio.h"
 #include "STR_Chelo.h"
 
-int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubicacion, int tf)
+int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubicacion, int of, int tf)
 {
 	int n=0,n2=0,n3=0,n4=0, lnga=0, lngb=0,lngd=0,lnge=0,h=0,estado=0;
 	
@@ -80,6 +80,10 @@ int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubic
 							}
 							strtok(c,",:");
 							lngd= atoi(strtok(NULL,",: "));
+							if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector 
 									if (lngd < 10) 
 											{
@@ -149,7 +153,7 @@ int FT_String( unsigned char * a, unsigned char * b, unsigned char * c,int *ubic
 			}
 }
 
-int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsigned char * c,int *cn, int *ubicacion, int *idcom, int tf)
+int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsigned char * c,int *cn, int *ubicacion, int *idcom, int of, int tf)
 {
 	int n=0,n2=0,n3=0,n4=0,n5=0, lnga=0, lngb=0,lngd=0,lnge=0,h=0,estado=0,cliente=0;
 
@@ -230,6 +234,10 @@ int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsign
 							}
 							strtok(c,",:");
 							lngd= atoi(strtok(NULL,",: "));
+							if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector
 									if (lngd < 10)
 											{
@@ -303,10 +311,15 @@ int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsign
 							{						 // n quedó en la ultima posicion del vector b
 								c[n4]=a[n-lngb+n4];
 								n4++;
-								*cn=n4;  //lonitud del vector tok + el /r/n+IPD,XXX:
+								*cn=n4;  //lonitud del vector tok + el /r/n+IPD,XX:
 							}
 							strtok(c,",:"); //En teoria no afecta el vector
 							lngd= atoi(strtok(NULL,",: ")); //Datos informados de +IPD,XX: no deberia afectar el vector
+
+							if(lngd>=of-1)//if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector
 									if (lngd < 10)
 											{
@@ -381,6 +394,10 @@ int FT_String_ND( unsigned char * a, int *an, unsigned char * b, int *bn, unsign
 							strtok(c,",:"); //En teoria no afecta el vector
 							cliente= atoi(strtok(NULL,",: ")); //Clieng del cual se reciben los datos
 							lngd= atoi(strtok(NULL,",: ")); //Datos informados de +IPD,XX: no deberia afectar el vector
+							if(lngd>=of-1)
+							{
+								lngd=of-1;
+							}
 							c[6]=',';//------------------------------Reconstruyo vector
 									if (lngd < 10)
 											{
@@ -463,6 +480,56 @@ int i=0;
 		return(i);
 }
 
+int FTOA( int a,  unsigned char *v1, int comma)
+{
+//char origbuff[20]="0";
+char origbuff[20];
+origbuff[0]='\0';
+
+int i=0;
+int b=0;
+
+		sprintf(origbuff,"%i",a); 	//Paso el entreo a cadena de caracteres
+		b=strlen(origbuff);
+		if(comma<b)					//Si la posición de la coma es menor a la posición de los caracteres ejemplo int= 2 comma=0 resultado = 0,02
+		{
+			while(i<=((b)+1))
+			{
+				if((i==(b-comma))&&(comma<(b))&&(comma!=0))
+				{
+					*v1++='.';
+				}
+				*v1++=(unsigned char)origbuff[i];
+				i++;
+			}
+			//*v1++='\0';
+			return(i);
+		  }
+		else
+		{
+			if(b==1)
+			{
+				v1[0]='0';
+				v1[1]='.';
+				v1[2]=origbuff[0];
+				v1[3]='\0';
+			}
+			else
+			{
+				if(b==0)
+				{
+					*v1++='0';
+					*v1++='.';
+					*v1++='0';
+					*v1++='\0';
+				}
+			}
+
+		}
+
+		return(0);
+}
+
 uint16_t ByteToInt( uint8_t a, uint8_t b)
 {
 	uint16_t c=0;
@@ -500,7 +567,7 @@ else
 			if (d==1)
 			{
 			  p=c;
-			  while (p<512)// OJO SOLO HTTP while (p<128)
+			  while (p<c+1)//512)// OJO SOLO HTTP while (p<128)
 			  {
 
 				  *a++=*f;//*a++=*e; //Lo que está en la memoria de f vaya a la memoria de a
