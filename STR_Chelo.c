@@ -543,10 +543,7 @@ int CopiaVector( char *a, char *b, int c, int d,char *e)
 int x =0;
 char j[]="\0";  //Vector
 char *f=&j;		//Puntero tipo char que aloja las direcciones de memoria del vector j
-if (c==0)
-{
-	x=strlen(b);
-}
+if (c==0) x=strlen(b);
 else
 	{
 		x=c;
@@ -562,22 +559,16 @@ else
 					*a++=*b++;
 					p++;
 				}
-
-
-			if (d==1)
-			{
-			  p=c;
-			  while (p<c+1)//512)// OJO SOLO HTTP while (p<128)
-			  {
-
-				  *a++=*f;//*a++=*e; //Lo que está en la memoria de f vaya a la memoria de a
-				  p++;
-				  //&a[p]="/0";
-
-			  }
-			return (0);
-			}
-
+				if (d==1)
+				{
+				  p=c;
+				  while (p<c+1)//512)// OJO SOLO HTTP while (p<128)
+				  {
+					  *a++=*f;//*a++=*e; //Lo que está en la memoria de f vaya a la memoria de a
+					  p++;
+				  }
+				return (0);
+				}
 			}
 	}
 return (1);
