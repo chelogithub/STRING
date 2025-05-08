@@ -547,14 +547,14 @@ if (c==0) x=strlen(b);
 else
 	{
 		x=c;
-		if (x>1024)// OJO SOLO HTTP if (x>128) (x>512)
+		if (x>1023)// OJO SOLO HTTP if (x>128) (x>512)
 			{
-				return(1);
+				return(1);  //Estoy pasado de cantidad de datos
 			}
 		else
 			{
 				int p=0;
-				while(p<x)
+				while(p<x)   //Recorro todo el vector copiando de b en a hasta la cdad mencionada
 				{
 					*a++=*b++;
 					p++;
