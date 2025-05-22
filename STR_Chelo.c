@@ -547,7 +547,7 @@ if (c==0) x=strlen(b);
 else
 	{
 		x=c;
-		if (x>1023)// OJO SOLO HTTP if (x>128) (x>512)
+		if (x>4096)//(x>1023)// OJO SOLO HTTP if (x>128) (x>512)
 			{
 				return(1);  //Estoy pasado de cantidad de datos
 			}
